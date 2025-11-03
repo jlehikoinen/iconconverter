@@ -22,10 +22,6 @@ struct IconConverterApp: App {
                 /// "Drop app icon to Dock icon" support is configured in Info > Document Types
                 .onOpenURL { url in
                     Task {
-                        
-                        // TEMP
-                        Logger.app.info("\(AppConfig.appVersion)")
-                        
                         store.iconIsAnimating.toggle()
                         Logger.app.info("The app was launched when an app icon was dropped onto the Dock icon or from the Finder Quick Action with an URL: \(url.path)")
                         store.droppedImage.appUrl = url
