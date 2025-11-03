@@ -17,8 +17,6 @@ enum AppPreferences {
     static let targetSizeKey = "targetSize"
     
     /// Default values
-    static let defaultSavePathIsConfigured = false
-    static let defaultSavePath = "/Users/Shared"
     static let defaultIconSize = IconSize.L.rawValue        // See IconSize enum
     
     /// Handle default values
