@@ -2,6 +2,8 @@
 
 Convert macOS app bundle icon to `.png` format.
 
+![App window](Pics/AppWindow.png)
+
 ## Features
 
 - Drop app bundle to app window
