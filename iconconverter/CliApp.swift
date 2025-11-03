@@ -16,7 +16,7 @@ struct Iconconverter: AsyncParsableCommand {
         discussion: """
             See README.md for more info.
             """,
-        version: "0.1",
+        version: AppConfig.appVersion,
         subcommands: [
             Convert.self
         ]

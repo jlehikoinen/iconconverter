@@ -20,6 +20,9 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
             preconditionFailure("Expected a valid array of attachments")
         }
         
+        // TEMP
+        Logger.quickActionExtension.info("\(AppConfig.appVersion)")
+        
         for attachment in inputAttachments {
             
             // Allow only app bundle attachment types
