@@ -56,6 +56,7 @@
 		683D505D2EB5D6DE0079ACCF /* Exceptions for "Shared" folder in "Extract App Icon" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				00_App/AppConfig.swift,
 				01_Models/FileDropState.swift,
 				"02_Extensions/Logger+Extension.swift",
 			);
