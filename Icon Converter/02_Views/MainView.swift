@@ -11,8 +11,8 @@ struct MainView: View {
     
     @Environment(DataStore.self) private var store
     @State private var displayingPopover = false
-    @AppStorage(AppPreferences.targetSizeKey,
-                store: UserDefaults(suiteName: AppPreferences.suiteName)) var targetSize: Int = AppPreferences.defaultIconSize
+    @AppStorage(AppPreferences.exportSizeKey,
+                store: UserDefaults(suiteName: AppPreferences.suiteName)) var exportSize: Int = AppPreferences.defaultIconSize
     
     // MARK: Main view
     

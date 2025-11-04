@@ -14,11 +14,11 @@ enum AppPreferences {
     static let sharedDefaults = UserDefaults.init(suiteName: AppPreferences.suiteName)
     
     /// Keys
-    static let targetSizeKey = "targetSize"
+    static let exportSizeKey = "exportSize"
     
     /// Default values
     static let defaultIconSize = IconSize.L.rawValue        // See IconSize enum
     
     /// Handle default values
-    static let targetSize = sharedDefaults?.integer(forKey: AppPreferences.targetSizeKey) ?? AppPreferences.defaultIconSize
+    static let exportSize = sharedDefaults?.integer(forKey: AppPreferences.exportSizeKey) ?? AppPreferences.defaultIconSize
 }

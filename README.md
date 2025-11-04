@@ -42,3 +42,5 @@ Read app settings:
 ```
 defaults read ~"/Library/Group Containers/group.com.github.IconConverter/Library/Preferences/group.com.github.IconConverter.plist"
 ```
+
+Note! App settings `exportSize` is half of what is actually displayed in GUI.

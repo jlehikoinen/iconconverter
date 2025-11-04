@@ -11,8 +11,8 @@ import os
 
 struct IconFactory {
     
-    @AppStorage(AppPreferences.targetSizeKey,
-                store: UserDefaults(suiteName: AppPreferences.suiteName)) var targetSize: Int = AppPreferences.defaultIconSize
+    @AppStorage(AppPreferences.exportSizeKey,
+                store: UserDefaults(suiteName: AppPreferences.suiteName)) var exportSize: Int = AppPreferences.defaultIconSize
     
     func handleDrop(for url: URL) async -> NSImage {
         
@@ -22,8 +22,8 @@ struct IconFactory {
         if let representation = NSWorkspace.shared.icon(forFile: url.path)
             .bestRepresentation(for: NSRect(x: 0,
                                             y: 0,
-                                            width: targetSize,
-                                            height: targetSize),
+                                            width: exportSize,
+                                            height: exportSize),
                                 context: nil,
                                 hints: nil) {
             image = NSImage(size: representation.size)
