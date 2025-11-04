@@ -11,8 +11,7 @@ import os
 
 struct IconFactory {
     
-    @AppStorage(AppPreferences.exportSizeKey,
-                store: UserDefaults(suiteName: AppPreferences.suiteName)) var exportSize: Int = AppPreferences.defaultIconSize
+    @AppStorage(AppPreferences.exportSizeKey) var exportSize: Int = AppPreferences.defaultIconSize
     
     func handleDrop(for url: URL) async -> NSImage {
         

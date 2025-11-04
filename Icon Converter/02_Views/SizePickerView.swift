@@ -10,8 +10,7 @@ import SwiftUI
 struct SizePickerView: View {
     
     @Environment(DataStore.self) private var store
-    @AppStorage(AppPreferences.exportSizeKey,
-                store: UserDefaults(suiteName: AppPreferences.suiteName)) var exportSize: Int = AppPreferences.defaultIconSize
+    @AppStorage(AppPreferences.exportSizeKey) var exportSize: Int = AppPreferences.defaultIconSize
     
     var sizes = IconSize.allCases
     

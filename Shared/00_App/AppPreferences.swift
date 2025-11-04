@@ -9,9 +9,12 @@ import Foundation
 
 enum AppPreferences {
     
+    // Defaults
+    static let defaults = UserDefaults.standard
+    
     /// App Groups
-    static let suiteName = "group.com.github.IconConverter"
-    static let sharedDefaults = UserDefaults.init(suiteName: AppPreferences.suiteName)
+    // static let suiteName = "group.com.github.IconConverter"
+    // static let sharedDefaults = UserDefaults.init(suiteName: AppPreferences.suiteName)
     
     /// Keys
     static let exportSizeKey = "exportSize"
@@ -20,5 +23,5 @@ enum AppPreferences {
     static let defaultIconSize = IconSize.L.rawValue        // See IconSize enum
     
     /// Handle default values
-    static let exportSize = sharedDefaults?.integer(forKey: AppPreferences.exportSizeKey) ?? AppPreferences.defaultIconSize
+    static let exportSize = defaults.integer(forKey: AppPreferences.exportSizeKey) ?? AppPreferences.defaultIconSize
 }
