@@ -25,6 +25,7 @@ target_path="$HOME/Desktop"
 datetime=$(/bin/date +%Y%m%d%H%M%S)
 product_name="iconconverter"
 app_name="Icon Converter"
+extension_name="Extract App Icon"
 export_path="${target_path}/${product_name}-$datetime"
 build_path_xcode="${export_path}/build_xcode"
 build_path_app="${build_path_xcode}/Build/Products/Release/${app_name}.app"
@@ -41,6 +42,9 @@ identifier="com.github.IconConverter"
 app_signing_cert="Developer ID Application: Janne Lehikoinen (DAQCN465V5)"
 installer_signing_cert="Developer ID Installer: Janne Lehikoinen (DAQCN465V5)"
 keychain_profile="github-mac-apps-notarization"
+
+## GitHub
+gh_access_token_name_in_keychain="iconconverter-gh-access-token"
 
 ###
 
@@ -135,6 +139,57 @@ function notarize_pkg() {
     /usr/bin/xcrun stapler staple "$pkg_path"
 }
 
+function create_release() {
+
+    json_string=$(/usr/bin/jq -n \
+        --arg tag_name "v$version" \
+        --arg name "$pkg_name v$version" \
+        --arg body "This is a signed and notarized installer package containing ${app_name} app, ${extension_name} Finder extension and '`$pkg_name`' cli tool." \
+    '
+    {
+        tag_name: $tag_name,
+        target_commitish: "main",
+        name: $name,
+        body: $body,
+        draft: false,
+        prerelease: false,
+        generate_release_notes: false
+    }
+    '
+    )
+
+    release_id=$(/usr/bin/curl -L \
+        -X POST \
+        -H "Accept: application/vnd.github+json" \
+        -H "Authorization: Bearer $(/usr/bin/security find-generic-password -w -s "$gh_access_token_name_in_keychain" -a "$gh_access_token_name_in_keychain")" \
+        -H "X-GitHub-Api-Version: 2022-11-28" \
+        https://api.github.com/repos/jlehikoinen/iconconverter/releases \
+        -d "$json_string" | /usr/bin/jq .id)
+}
+
+function upload_release_asset() {
+
+    /usr/bin/curl -L \
+        -X POST \
+        -H "Accept: application/vnd.github+json" \
+        -H "Authorization: Bearer $(/usr/bin/security find-generic-password -w -s "$gh_access_token_name_in_keychain" -a "$gh_access_token_name_in_keychain")" \
+        -H "X-GitHub-Api-Version: 2022-11-28" \
+        -H "Content-Type: application/octet-stream" \
+        "https://api.github.com/repos/jlehikoinen/iconconverter/releases/$release_id/assets?name=$pkg_name-$version.pkg" \
+        --data-binary "@${pkg_path}"
+}
+
+function create_new_commit() {
+
+    git -C ${parent_dir} commit -a -m "Version $version release"
+    git -C ${parent_dir} push
+}
+
+function open_releases_url() {
+
+    open "https://github.com/jlehikoinen/iconconverter/releases"
+}
+
 ###
 
 tail_log
@@ -143,6 +198,11 @@ build_app
 build_cli_tool
 create_pkg
 notarize_pkg
+create_release
+upload_release_asset
+create_new_commit
+sleep 3
+open_releases_url
 echo "\nPost-action done. Exiting."
 
 exit $?
