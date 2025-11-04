@@ -144,7 +144,7 @@ function create_release() {
     json_string=$(/usr/bin/jq -n \
         --arg tag_name "v$version" \
         --arg name "$pkg_name v$version" \
-        --arg body "This is a signed and notarized installer package containing ${app_name} app, ${extension_name} Finder extension and '`$pkg_name`' cli tool." \
+        --arg body 'This is a signed and notarized installer package containing **'"${app_name}"'** app, **'"${extension_name}"'** Finder extension and `'"${pkg_name}"'` cli tool.' \
     '
     {
         tag_name: $tag_name,
@@ -167,15 +167,14 @@ function create_release() {
         -d "$json_string" | /usr/bin/jq .id)
 }
 
-function upload_release_asset() {
-
+function upload_release_asset()
     /usr/bin/curl -L \
         -X POST \
         -H "Accept: application/vnd.github+json" \
         -H "Authorization: Bearer $(/usr/bin/security find-generic-password -w -s "$gh_access_token_name_in_keychain" -a "$gh_access_token_name_in_keychain")" \
         -H "X-GitHub-Api-Version: 2022-11-28" \
         -H "Content-Type: application/octet-stream" \
-        "https://api.github.com/repos/jlehikoinen/iconconverter/releases/$release_id/assets?name=$pkg_name-$version.pkg" \
+        "https://uploads.github.com/repos/jlehikoinen/iconconverter/releases/$release_id/assets?name=$pkg_name-$version.pkg" \
         --data-binary "@${pkg_path}"
 }
 
