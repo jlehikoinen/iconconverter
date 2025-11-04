@@ -40,7 +40,7 @@ iconconverter convert /System/Applications/Automator.app ~/Desktop --size 128
 Read app settings:
 
 ```
-defaults read ~/Library/Containers/com.github.IconConverter/Data/Library/Preferences/com.github.IconConverter.plist"
+defaults read ~/Library/Containers/com.github.IconConverter/Data/Library/Preferences/com.github.IconConverter.plist
 ```
 
 Note! App settings `exportSize` is half of what is actually displayed in GUI.
