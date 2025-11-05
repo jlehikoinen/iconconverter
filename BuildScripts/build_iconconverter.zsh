@@ -167,7 +167,7 @@ function create_release() {
         -d "$json_string" | /usr/bin/jq .id)
 }
 
-function upload_release_asset()
+function upload_release_asset() {
     /usr/bin/curl -L \
         -X POST \
         -H "Accept: application/vnd.github+json" \
