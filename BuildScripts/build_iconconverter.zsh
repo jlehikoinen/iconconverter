@@ -152,7 +152,7 @@ function create_release() {
         name: $name,
         body: $body,
         draft: false,
-        prerelease: false,
+        prerelease: true,
         generate_release_notes: false
     }
     '
