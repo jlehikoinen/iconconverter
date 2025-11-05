@@ -23,5 +23,5 @@ enum AppPreferences {
     static let defaultIconSize = IconSize.L.rawValue        // See IconSize enum
     
     /// Handle default values
-    static let exportSize = defaults.integer(forKey: AppPreferences.exportSizeKey) ?? AppPreferences.defaultIconSize
+    static let exportSize = defaults.integer(forKey: AppPreferences.exportSizeKey)
 }
