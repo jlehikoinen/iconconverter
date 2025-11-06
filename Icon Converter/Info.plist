@@ -13,7 +13,7 @@
 			<string>Default</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>public.directory</string>
+				<string>com.apple.application-bundle</string>
 			</array>
 			<key>NSDocumentClass</key>
 			<string></string>
