@@ -19,14 +19,6 @@
 			<string></string>
 		</dict>
 	</array>
-	<key>CFBundleIcons</key>
-	<dict>
-		<key>CFBundlePrimaryIcon</key>
-		<dict>
-			<key>CFBundleSymbolName</key>
-			<string>star</string>
-		</dict>
-	</dict>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
