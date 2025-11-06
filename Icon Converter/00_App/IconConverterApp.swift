@@ -17,7 +17,7 @@ struct IconConverterApp: App {
     var body: some Scene {
         Window("Icon Converter", id: "main") {
             MainView()
-                .frame(minWidth: AppConfig.windowSize, idealWidth: AppConfig.windowSize, minHeight: AppConfig.windowSize, idealHeight: AppConfig.windowSize)
+                .frame(minWidth: AppConfig.minWindowSize, idealWidth: AppConfig.minWindowSize, minHeight: AppConfig.minWindowSize, idealHeight: AppConfig.minWindowSize)
                 .environment(store)
                 /// "Drop app icon to Dock icon" support is configured in Info > Document Types
                 .onOpenURL { url in

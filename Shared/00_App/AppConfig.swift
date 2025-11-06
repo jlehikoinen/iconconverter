@@ -10,7 +10,7 @@ import Foundation
 enum AppConfig {
     
     // GUI
-    static let windowSize: CGFloat = 500
+    static let minWindowSize: CGFloat = 500
     
     // File extensions
     static let appBundleExtension = "app"
