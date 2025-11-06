@@ -29,7 +29,8 @@ extension_name="Extract App Icon"
 export_path="${target_path}/${product_name}-$datetime"
 build_path_xcode="${export_path}/build_xcode"
 build_path_app="${build_path_xcode}/Build/Products/Release/${app_name}.app"
-zip_path="${build_path_xcode}/Build/Products/Release/${app_name}.zip"
+extension_app_path="${build_path_app}/Contents/PlugIns/Extract App Icon.appex"
+extension_entitlements_path="${parent_dir}/Extract App Icon/Extract App Icon.entitlements"
 build_path_cli_tool="${build_path_xcode}/Build/Products/Release/${product_name}"
 log_file="${export_path}/${product_name}-build-$datetime.txt"
 build_path_pkg="${export_path}/build_pkg"
@@ -80,7 +81,7 @@ function tail_log() {
 
 function build_app() {
 
-    echo "Exporting archive.."
+    echo "Building app archive.."
     /usr/bin/xcodebuild -project "${parent_dir}/${xcode_project_name}" \
         -scheme "$app_name" \
         -configuration Release \
@@ -95,7 +96,7 @@ function build_app() {
 
 function build_cli_tool() {
 
-    echo "Exporting archive.."
+    echo "Building cli archive.."
     /usr/bin/xcodebuild -project "${parent_dir}/${xcode_project_name}" \
         -scheme "$product_name" \
         -configuration Release \
@@ -106,6 +107,16 @@ function build_cli_tool() {
         echo "ERROR: Export failed. Exiting."
         exit 1
     fi
+}
+
+function sign_finder_extension() {
+
+    echo "Codesigning Finder extension..."
+    codesign -s "$app_signing_cert" \
+        -f --timestamp \
+        -o runtime \
+        --entitlements "$extension_entitlements_path" \
+        "$extension_app_path"
 }
 
 function create_pkg() {
@@ -195,6 +206,7 @@ tail_log
 increment_version_number
 build_app
 build_cli_tool
+sign_finder_extension
 create_pkg
 notarize_pkg
 create_release
