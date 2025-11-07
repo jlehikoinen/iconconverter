@@ -112,8 +112,9 @@ function build_cli_tool() {
 function sign_finder_extension() {
 
     echo "Codesigning Finder extension..."
-    codesign -s "$app_signing_cert" \
-        -f --timestamp \
+    codesign --force \
+        -s "$app_signing_cert" \
+        --timestamp \
         -o runtime \
         --entitlements "$extension_entitlements_path" \
         "$extension_app_path"
