@@ -9,7 +9,7 @@ Convert macOS app bundle icon to `.png` format.
 - Drop app bundle to app window
 - Drop app bundle to Dock icon
 - CLI tool
-- __Finder extension work in progress__
+- _Finder extension work in progress_
 
 ### Finder Extension setup
 
