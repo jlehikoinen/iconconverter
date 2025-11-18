@@ -42,20 +42,10 @@ extension Iconconverter {
             
             if let size {
                 iconImage.size = size / 2
-                guard isValidSize(iconImage) else { return }
+                guard CLIInputValidator.isValidSize(iconImage) else { return }
             }
             
             await iconFactory.process(iconImage)
-        }
-        
-        private func isValidSize(_ iconImage: IconImage) -> Bool {
-            
-            let sizes = IconSize.allCases.map { $0 }
-            guard sizes.contains(where: { $0.rawValue == iconImage.size }) else {
-                print(CLIInputError.invalidSize.description)
-                return false
-            }
-            return true
         }
     }
 }

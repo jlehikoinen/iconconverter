@@ -49,4 +49,14 @@ struct CLIInputValidator {
         
         return true
     }
+    
+    static func isValidSize(_ iconImage: IconImage) -> Bool {
+        
+        let sizes = IconSize.allCases.map { $0 }
+        guard sizes.contains(where: { $0.rawValue == iconImage.size }) else {
+            print(CLIInputError.invalidSize.description)
+            return false
+        }
+        return true
+    }
 }
