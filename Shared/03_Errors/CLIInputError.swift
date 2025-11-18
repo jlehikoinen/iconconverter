@@ -10,7 +10,7 @@ enum CLIInputError: Error {
     case nonExistentPath(String)
     case notAnAppBundle(String)
     case notADirectory(String)
-    case invalidSize(Int)
+    case invalidSize
     
     var description: String {
         switch self {
@@ -20,8 +20,8 @@ enum CLIInputError: Error {
             return "ERROR: path is not an app bundle: \(path)"
         case .notADirectory(let path):
             return "ERROR: path is not a directory: \(path)"
-        case .invalidSize(let size):
-            return "ERROR: invalid size: \(size). Min. value is 32, max. value is 1024."
+        case .invalidSize:
+            return "ERROR: invalid size. Min. value is \(IconSize.min), max. value is \(IconSize.max)."
         }
     }
 }

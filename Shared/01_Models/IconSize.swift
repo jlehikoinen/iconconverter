@@ -20,4 +20,12 @@ enum IconSize: Int, CaseIterable {
     var doubled: Int {
         rawValue * 2
     }
+    
+    static var min: Int {
+        allCases.first!.rawValue * 2
+    }
+    
+    static var max: Int {
+        allCases.last!.rawValue * 2
+    }
 }

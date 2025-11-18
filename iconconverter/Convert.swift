@@ -52,7 +52,7 @@ extension Iconconverter {
             
             let sizes = IconSize.allCases.map { $0 }
             guard sizes.contains(where: { $0.rawValue == iconImage.size }) else {
-                print(CLIInputError.invalidSize(iconImage.humanFriendlySize).description)
+                print(CLIInputError.invalidSize.description)
                 return false
             }
             return true
