@@ -39,6 +39,12 @@ Convert Automator icon and save it to Desktop using size 128 x 128:
 iconconverter convert /System/Applications/Automator.app ~/Desktop --size 128
 ```
 
+Convert all app icons in `/Applications` folder:
+
+```
+for app in /Applications/*.app; do iconconverter convert "$app" path/to/savelocation; done
+```
+
 ## Settings
 
 Read app settings:
