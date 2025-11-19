@@ -8,8 +8,16 @@ Convert macOS app bundle icon to `.png` format.
 
 - Drop app bundle to app window
 - Drop app bundle to Dock icon
+- Finder Quick Action extension
 - CLI tool
-- _Finder extension work in progress_
+
+### Finder Extension setup
+
+1. Open Finder
+2. Right click file or folder in Finder
+3. Select **Quick Actions**
+4. Select **Customize...**
+5. Enable **Extract App Icon**
 
 ## CLI Usage
 
