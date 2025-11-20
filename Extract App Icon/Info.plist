@@ -17,21 +17,15 @@
         SUBQUERY (
             $extensionItem.attachments,
             $attachment,
-            ANY $attachment.registeredTypeIdentifiers UTI-CONFORMS-TO "com.apple.application-bundle"
+            ANY $attachment.registeredTypeIdentifiers UTI-CONFORMS-TO &quot;com.apple.application-bundle&quot;
         ).@count == $extensionItem.attachments.@count
 ).@count == 1</string>
 			<key>NSExtensionServiceAllowsFinderPreviewItem</key>
 			<true/>
-			<key>NSExtensionServiceAllowsTouchBarItem</key>
-			<true/>
 			<key>NSExtensionServiceFinderPreviewIconName</key>
-			<string>NSActionTemplate</string>
+			<string>ActionIcon</string>
 			<key>NSExtensionServiceRoleType</key>
 			<string>NSExtensionServiceRoleTypeEditor</string>
-			<key>NSExtensionServiceTouchBarBezelColorName</key>
-			<string>TouchBarBezel</string>
-			<key>NSExtensionServiceTouchBarIconName</key>
-			<string>NSActionTemplate</string>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.services</string>
