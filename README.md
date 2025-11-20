@@ -4,6 +4,10 @@ Convert macOS app bundle icon to `.png` format.
 
 ![App window](Pics/AppWindow.png)
 
+## System Requirements
+
+- macOS Tahoe 26 or later
+
 ## Features
 
 - Drop app bundle to app window
