@@ -58,3 +58,17 @@ defaults read ~/Library/Containers/com.github.IconConverter/Data/Library/Prefere
 ```
 
 Note! App settings `exportSize` is half of what is actually displayed in GUI.
+
+## Logging
+
+Application:
+
+```
+log stream --predicate 'subsystem=="com.github.IconConverter"' --info
+```
+
+Finder Extension:
+
+```
+log stream --predicate 'subsystem=="com.github.IconConverter.Extract-App-Icon"' --info
+```
