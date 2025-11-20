@@ -41,8 +41,9 @@ extension Iconconverter {
             var iconImage = IconImage(appUrl: URL(fileURLWithPath: appPath), saveUrl: URL(fileURLWithPath: savePath))
             
             if let size {
-                iconImage.size = size / 2
-                guard CLIInputValidator.isValidSize(iconImage) else { return }
+                let halfSize = size / 2
+                guard CLIInputValidator.isValidSize(halfSize) else { return }
+                iconImage.size = halfSize
             }
             
             await iconFactory.process(iconImage)

@@ -1,5 +1,5 @@
 //
-//  CliApp.swift
+//  CLIApp.swift
 //  iconconverter
 //
 //  Created by Janne Lehikoinen on 30.10.2025.

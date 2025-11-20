@@ -50,10 +50,10 @@ struct CLIInputValidator {
         return true
     }
     
-    static func isValidSize(_ iconImage: IconImage) -> Bool {
+    static func isValidSize(_ size: Int) -> Bool {
         
-        let sizes = IconSize.allCases.map { $0 }
-        guard sizes.contains(where: { $0.rawValue == iconImage.size }) else {
+        let allSizes = IconSize.allCases.map { $0 }
+        guard allSizes.contains(where: { $0.rawValue == size }) else {
             print(CLIInputError.invalidSize.description)
             return false
         }
